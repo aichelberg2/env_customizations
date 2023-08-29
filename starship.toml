@@ -11,7 +11,7 @@ $git_status\
 $time\
 [ ](fg:#4d0303)\
 \n[│](fg:#ff8a8a)\
-\n[╰── ](fg:#ff8a8a)"""
+\n[╰──⎸⌾ ](fg:#ff9a8a)"""
 
 [directory]
 style = "fg:#ffd9d9 bg:#d64545"
