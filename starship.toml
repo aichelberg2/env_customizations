@@ -1,6 +1,6 @@
 format = """
 [╭─](fg:#ff8a8a)\
-[](bg:#090c0c fg:#ff8a8a)\
+[](fg:#ff8a8a)\
 [ ](bg:#ff8a8a fg:#090c0c)\
 [](bg:#d64545 fg:#ff8a8a)\
 $username\
@@ -12,12 +12,10 @@ $git_status\
 [](fg:#8c1111 bg:#4d0303)\
 $time\
 [ ](fg:#4d0303)\
-\n[│](fg:#ff8a8a)\
 \n[╰──⎸⌾ ](fg:#ff9a8a)"""
 
 [username]
-style = "bg:#d64545"
-format = '[[( @$user )](fg:#ffd9d9 bg:#d64545)]($style)'
+format= '[( $user )](fg:#ffd9d9 bg:#d64545)'
 
 [directory]
 style = "fg:#ffd9d9 bg:#a81d1d"
