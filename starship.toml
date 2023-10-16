@@ -1,24 +1,71 @@
 format = """
-[╭─](fg:#ff8a8a)\
-[](fg:#ff8a8a)\
-[ ](bg:#ff8a8a fg:#090c0c)\
-[](bg:#d64545 fg:#ff8a8a)\
+[╭─](fg:#e4ae81)\
+[](fg:#e4ae81)\
+[ ](bg:#e4ae81 fg:#090c0c)\
+$os\
+[](bg:#b86539 fg:#e4ae81)\
 $username\
-[](fg:#d64545 bg:#a81d1d)\
+[](fg:#b86539 bg:#8d4018)\
 $directory\
-[](fg:#a81d1d bg:#8c1111)\
+[](fg:#8d4018 bg:#642b0e)\
 $git_branch\
 $git_status\
-[](fg:#8c1111 bg:#4d0303)\
+[](fg:#642b0e bg:#451b06)\
 $time\
-[ ](fg:#4d0303)\
-\n[╰──⎸⌾ ](fg:#ff9a8a)"""
+[ ](fg:#451b06)\
+\n[╰──⎸⌾ ](fg:#e4ae81)"""
+
+[os]
+disabled = false
+format = "[($symbol)($name) ($version) ](bg:#e4ae81 fg:#090c0c)"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
 
 [username]
-format= '[( $user )](fg:#ffd9d9 bg:#d64545)'
+show_always = true
+format = '[ ($user) ](fg:#f1d4bc bg:#b86539)'
 
 [directory]
-style = "fg:#ffd9d9 bg:#a81d1d"
+style = "fg:#f1d4bc bg:#8d4018"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -32,14 +79,14 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#ffd9d9 bg:#8c1111)]($style)'
+format = '[[ $symbol $branch ](fg:#f1d4bc bg:#642b0e)]($style)'
 
 [git_status]
 style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#ffd9d9 bg:#8c1111)]($style)'
+format = '[[($all_status$ahead_behind )](fg:#f1d4bc bg:#642b0e)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#4d0303"
-format = '[[  $time ](fg:#ffd9d9 bg:#4d0303)]($style)'
+format = '[[  $time ](fg:#f1d4bc bg:#451b06)]($style)'
