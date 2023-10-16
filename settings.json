@@ -31,6 +31,7 @@
     ],
     "alwaysOnTop": false,
     "autoHideWindow": false,
+    "confirmCloseAllTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{51855cb2-8cce-5362-8f54-464b92b32386}",
@@ -47,8 +48,9 @@
     {
         "defaults": 
         {
-            "backgroundImage": "C:\\Users\\L15\\Dropbox\\Bilder\\Backgrounds\\Diashow\\HEROSCREEN-JAPANESE-LANDSCAPE-FOREST-CASTLE-WALLPAPER-4K.png",
-            "backgroundImageOpacity": 0.18,
+            "backgroundImage": "C:\\Users\\cgpp\\OneDrive - Festo\\CGPP\\Bilder\\977483.jpg",
+            "backgroundImageOpacity": 0.26,
+            "bellStyle": "none",
             "colorScheme": "customOne",
             "cursorShape": "emptyBox",
             "font": 
@@ -79,12 +81,6 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": true,
-                "name": "Git Bash",
-                "source": "Git"
-            },
-            {
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
                 "name": "Ubuntu",
@@ -94,18 +90,6 @@
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": true,
                 "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{4ca3f36a-954b-5f17-a131-52dc5790981e}",
-                "hidden": true,
-                "name": "Ubuntu 18.04.5 on Windows",
-                "source": "CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc"
-            },
-            {
-                "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
-                "hidden": true,
-                "name": "Ubuntu-18.04",
                 "source": "Windows.Terminal.Wsl"
             }
         ]
@@ -366,27 +350,27 @@
             "yellow": "#808000"
         },
         {
-            "background": "#1A1A1A",
+            "background": "#000000",
             "black": "#121212",
-            "blue": "#7F0004",
-            "brightBlack": "#666666",
-            "brightBlue": "#9F0004",
-            "brightCyan": "#FF0004",
-            "brightGreen": "#A13F12",
-            "brightPurple": "#CF0004",
-            "brightRed": "#F95E1B",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#7F0004",
+            "blue": "#D6BCA7",
+            "brightBlack": "#614B38",
+            "brightBlue": "#FFE0C7",
+            "brightCyan": "#FFE0C7",
+            "brightGreen": "#FFC092",
+            "brightPurple": "#FFE0C7",
+            "brightRed": "#FFB670",
+            "brightWhite": "#FFE0C7",
+            "brightYellow": "#FFE0C7",
             "cursorColor": "#FFFFFF",
-            "cyan": "#DF0004",
-            "foreground": "#F1F1F1",
-            "green": "#913F12",
+            "cyan": "#D6BCA7",
+            "foreground": "#FFE0C7",
+            "green": "#DBA57E",
             "name": "customOne",
-            "purple": "#AF0004",
-            "red": "#D95E1B",
-            "selectionBackground": "#FFFFFF",
-            "white": "#F1F1F1",
-            "yellow": "#5F0004"
+            "purple": "#D6BCA7",
+            "red": "#D1955C",
+            "selectionBackground": "#F7DAC1",
+            "white": "#D6BCA7",
+            "yellow": "#D6BCA7"
         },
         {
             "background": "#1A1A1A",
