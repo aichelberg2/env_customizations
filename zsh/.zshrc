@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nv="nvim"
 alias vim="nvim"
+alias ls="exa -alh --icons"
+alias tree="exa --tree"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
