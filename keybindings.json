@@ -306,11 +306,23 @@
     "command": "extension.vim_backspace"
   },
   {
-    "key": "ctrl+backspace",
-    "command": "extension.vim_ctrl+backspace"
-  },
-  {
     "key": "ctrl+f",
     "command": "extension.vim_ctrl+f"
+  },
+  {
+    "key": "ctrl+shift+z",
+    "command": "-redo"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "-redo"
+  },
+  {
+    "key": "ctrl+z",
+    "command": "-undo"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "-workbench.action.files.save"
   }
 ]
