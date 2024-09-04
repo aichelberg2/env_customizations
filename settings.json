@@ -20,5 +20,6 @@
     "vim.vimrc.enable": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "vim.vimrc.path": "C:\\Users\\ChristianGappel\\.vimrc",
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<space>"
 }
