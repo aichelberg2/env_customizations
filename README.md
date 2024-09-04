@@ -1,11 +1,11 @@
 # Setup for Windows
 ## VSCode Extensions:
-(vscodevim)[https://marketplace.visualstudio.com/items?itemName=vscodevim.vim]
-(vsbbc)[https://marketplace.visualstudio.com/items?itemName=aichelberg2.vsbbc]
+- [vscodevim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
+- [vsbbc](https://marketplace.visualstudio.com/items?itemName=aichelberg2.vsbbc)
 
 ## Visual Studio Extensions:
-(zero dark theme)[https://marketplace.visualstudio.com/items?itemName=AgitoReiKen.zerovstheme]
-(vsvim)[https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim]
+- [zero dark theme](https://marketplace.visualstudio.com/items?itemName=AgitoReiKen.zerovstheme)
+- [vsvim](https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim)
 
 # Setup for Linux
 ```
