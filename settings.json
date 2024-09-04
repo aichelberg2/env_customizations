@@ -1,0 +1,24 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.mode": "none",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.colorTheme": "VSBBC",
+    "workbench.sideBar.location": "right",
+    "git.confirmSync": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.lineNumbers": "relative",
+    "editor.tabSize": 2,
+    "[xml]": {
+        "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "git.enableSmartCommit": true,
+    "vim.vimrc.enable": true,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "vim.vimrc.path": "C:\\Users\\ChristianGappel\\.vimrc",
+    "vim.useSystemClipboard": true
+}
