@@ -22,5 +22,6 @@
     "vim.vimrc.path": "C:\\Users\\ChristianGappel\\.vimrc",
     "vim.useSystemClipboard": true,
     "vim.leader": "<space>",
-    "git.autofetch": true
+    "git.autofetch": true,
+    "editor.wordWrap": "on"
 }
