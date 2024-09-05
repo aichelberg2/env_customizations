@@ -400,7 +400,7 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "alt+h",
+    "key": "alt+u",
     "command": "workbench.action.navigateBack",
     "when": "canNavigateBack"
   },
@@ -410,7 +410,7 @@
     "when": "canNavigateBack"
   },
   {
-    "key": "alt+h",
+    "key": "alt+u",
     "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
@@ -418,11 +418,6 @@
     "key": "alt+left",
     "command": "-workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "alt+h",
-    "command": "workbench.action.quickInputBack",
-    "when": "inQuickOpen"
   },
   {
     "key": "alt+left",
@@ -440,7 +435,7 @@
     "when": "accessibilityHelpIsShown"
   },
   {
-    "key": "alt+l",
+    "key": "alt+r",
     "command": "workbench.action.navigateForward",
     "when": "canNavigateForward"
   },
@@ -450,7 +445,7 @@
     "when": "canNavigateForward"
   },
   {
-    "key": "alt+l",
+    "key": "alt+r",
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
@@ -460,13 +455,38 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "alt+l",
-    "command": "quickInput.acceptInBackground",
-    "when": "cursorAtEndOfQuickInputBox && inQuickInput && quickInputType == 'quickPick' || inQuickInput && !inputFocus && quickInputType == 'quickPick'"
-  },
-  {
     "key": "alt+right",
     "command": "-quickInput.acceptInBackground",
     "when": "cursorAtEndOfQuickInputBox && inQuickInput && quickInputType == 'quickPick' || inQuickInput && !inputFocus && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "alt+l",
+    "command": "-toggleSearchEditorContextLines",
+    "when": "inSearchEditor"
+  },
+  {
+    "key": "alt+l",
+    "command": "-toggleFindInSelection",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+r",
+    "command": "-toggleSearchEditorRegex",
+    "when": "inSearchEditor && searchInputBoxFocus"
+  },
+  {
+    "key": "alt+r",
+    "command": "-workbench.action.terminal.toggleFindRegex",
+    "when": "terminalFindVisible && terminalHasBeenCreated || terminalFindVisible && terminalProcessSupported"
+  },
+  {
+    "key": "alt+r",
+    "command": "-toggleFindRegex",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+r",
+    "command": "-toggleSearchRegex",
+    "when": "searchViewletFocus"
   }
 ]
