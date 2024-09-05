@@ -1015,7 +1015,7 @@
     "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
   },
   {
-    "key": "ctrl+q",
+    "key": "ctrl+w",
     "command": "workbench.action.terminal.killEditor",
     "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
   },
@@ -1025,7 +1025,7 @@
     "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+q",
+    "key": "ctrl+w",
     "command": "workbench.action.closeActiveEditor"
   },
   {
@@ -1033,7 +1033,7 @@
     "command": "-workbench.action.closeActiveEditor"
   },
   {
-    "key": "ctrl+q",
+    "key": "ctrl+w",
     "command": "workbench.action.closeGroup",
     "when": "activeEditorGroupEmpty && multipleEditorGroups"
   },
@@ -1043,7 +1043,7 @@
     "when": "activeEditorGroupEmpty && multipleEditorGroups"
   },
   {
-    "key": "ctrl+w",
+    "key": "ctrl+s",
     "command": "workbench.action.files.save"
   }
 ]
