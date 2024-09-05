@@ -8,6 +8,7 @@ nnoremap <leader>p mzggVGp`z
 nnoremap <leader>d ggVGd
 nnoremap <leader>h _
 nnoremap <leader>l $
+nnoremap <leader>[ %
 nnoremap n o<Esc>
 nnoremap N O<Esc>
 nnoremap <C-k> <C-u>zz
