@@ -1,3 +1,6 @@
+# Font
+[JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+
 # Setup for Windows
 ## VSCode Extensions:
 - [vscodevim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
