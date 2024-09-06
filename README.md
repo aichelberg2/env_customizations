@@ -7,6 +7,7 @@
 - [vsbbc](https://marketplace.visualstudio.com/items?itemName=aichelberg2.vsbbc)
 
 ## Visual Studio Extensions:
+- `C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Platform`
 - [vsvim](https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim)
 
 # Setup for Linux
