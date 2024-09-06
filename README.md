@@ -7,7 +7,6 @@
 - [vsbbc](https://marketplace.visualstudio.com/items?itemName=aichelberg2.vsbbc)
 
 ## Visual Studio Extensions:
-- [zero dark theme](https://marketplace.visualstudio.com/items?itemName=AgitoReiKen.zerovstheme)
 - [vsvim](https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim)
 
 # Setup for Linux
