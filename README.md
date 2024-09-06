@@ -9,6 +9,8 @@
 ## Visual Studio Extensions:
 - `C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Platform`
 - [vsvim](https://marketplace.visualstudio.com/items?itemName=JaredParMSFT.VsVim)
+- UserMembers: Automatic
+- UserTypes: rgb(64, 128, 128) / #408080
 
 # Setup for Linux
 ```
