@@ -16,7 +16,7 @@ nnoremap <C-j> <C-d>zz
 vnoremap <C-k> <C-u>zz
 vnoremap <C-j> <C-d>zz
 nnoremap ; nzz
-nnoremap : Nzz
+nnoremap ' Nzz
 nnoremap J jzz
 nnoremap K kzz
 vnoremap J jzz
