@@ -54,4 +54,9 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
 	use 'lewis6991/gitsigns.nvim'
 	use 'smolck/command-completion.nvim'
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+
 end)
