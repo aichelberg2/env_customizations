@@ -44,6 +44,7 @@ Map("v", "<A-k>", ":m '<-2<CR>gv=gvzz")
 Map("n", "<C-w><C-w>", "<C-w><C-w><C-w>_")
 Map("n", "<C-w><C-p>", "<C-w><C-p><C-w>_")
 Map("n", "<C-w><C-m>", "<C-w>_")
+Map("v", "p", "pgvy")
 
 -- LSP Key Mappings
 Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
