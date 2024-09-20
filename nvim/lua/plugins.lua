@@ -54,4 +54,37 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'
 	use 'lewis6991/gitsigns.nvim'
 	use 'smolck/command-completion.nvim'
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+	use {
+		"folke/trouble.nvim",
+	}
+	use {
+		"mfussenegger/nvim-dap",
+		lazy = true,
+		requires = {
+			"jay-babu/mason-nvim-dap.nvim",
+			"rcarriga/nvim-dap-ui",
+		},
+		config = function()
+			require("config.dap")
+		end,
+	}
+
+	use {
+		"rcarriga/nvim-dap-ui",
+		lazy = true
+	}
+
+	use {
+		"jay-babu/mason-nvim-dap.nvim",
+		lazy = true,
+		config = function()
+			require("mason-nvim-dap").setup({
+				ensure_installed = { "python", "coreclr", "node2", "js", "chrome" }
+			})
+		end,
+	}
 end)

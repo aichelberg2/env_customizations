@@ -42,4 +42,5 @@ lsp.csharp_ls.setup({
 
 Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 Map("n", "<leader>pi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+Map("n", "<leader>pa", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 Map("n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>")

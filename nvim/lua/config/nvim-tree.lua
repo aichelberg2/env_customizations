@@ -24,11 +24,11 @@ local function open_nvim_tree_fullscreen()
 end
 
 -- Keybindings
-vim.api.nvim_set_keymap('n', '<leader>pe', '', {
-	noremap = true,
-	silent = true,
-	callback = open_nvim_tree_fullscreen
-})
+-- vim.api.nvim_set_keymap('n', '<leader>pe', '', {
+-- 	noremap = true,
+-- 	silent = true,
+-- 	callback = open_nvim_tree_fullscreen
+-- })
 
 vim.api.nvim_set_keymap('n', '<leader>pf', ':NvimTreeToggle<CR>', {
 	noremap = true,

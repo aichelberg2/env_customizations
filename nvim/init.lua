@@ -3,9 +3,20 @@ vim.g.mapleader = " "
 
 -- Key mappings
 function Map(mode, lhs, rhs, opts)
-	local options = {noremap = true, silent = true}
-	if opts then options = vim.tbl_extend("force", options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+
+    if type(rhs) == "function" then
+        rhs = string.format("<cmd>lua %s()<CR>", debug.getinfo(rhs).source:match("[%w_]+")) -- Get the function name
+    end
+
+    if opts and opts.buffer then
+        vim.api.nvim_buf_set_keymap(opts.buffer, mode, lhs, rhs, options)
+    else
+        vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    end
 end
 
 Map("n", "r", "<C-r>")
@@ -30,16 +41,23 @@ Map("n", "J", "jzz")
 Map("n", "K", "kzz")
 Map("v", "J", "jzz")
 Map("v", "K", "kzz")
-Map("n", "<leader>pe", ":Ex<CR>")
 Map("n", "<C-s>", ":w<CR>")
 Map("n", "<C-q>", ":q<CR>")
+Map("i", "<C-s>", "<Esc>:w<CR>")
+Map("i", "<C-q>", "<Esc>:q<CR>")
+Map("v", "<C-s>", ":w<CR>")
+Map("v", "<C-q>", ":q<CR>")
 Map("n", "<A-j>", ":m .+1<CR>==zz")
 Map("n", "<A-k>", ":m .-2<CR>==zz")
 Map("v", "<A-j>", ":m '>+1<CR>gv=gvzz")
 Map("v", "<A-k>", ":m '<-2<CR>gv=gvzz")
-Map("n", "<C-w><C-w>", "<C-w><C-w><C-w>_")
-Map("n", "<C-w><C-p>", "<C-w><C-p><C-w>_")
-Map("n", "<C-w><C-m>", "<C-w>_")
+Map("n", "<C-A-m>", "<C-w>_")
+Map("n", "<C-A-j>", "<C-w>j")
+Map("n", "<C-A-k>", "<C-w>k")
+Map("n", "<C-A-h>", "<C-w>h")
+Map("n", "<C-A-l>", "<C-w>l")
+Map("n", "<C-A-d>", "<C-w>-")
+Map("n", "<C-A-i>", "<C-w>+")
 
 -- LSP Key Mappings
 Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -100,5 +118,37 @@ require('config.cmp')
 require('config.lackluster')
 require('config.vm')
 require('config.gitsigns')
+require('config.lualine')
+require('config.trouble')
 require('command-completion').setup()
 require('config.borders').setup_lsp_handlers()
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf } -- Store the buffer from the event
+        Map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts) -- Changed to a string
+        Map('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', opts) -- Changed to a string
+        Map('n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>', opts) -- Changed to a string
+        Map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references({ initial_mode = "insert", trim_text = true, path_display = { truncate = 20 }, fname_width = 80 })<CR>', opts) -- Changed to a string
+        Map('n', 'go', '<cmd>lua require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 })<CR>', opts) -- Changed to a string
+        Map('n', 'gO', '<cmd>lua require("telescope.builtin").lsp_workspace_symbols({ symbol_width = 30, path_display = {"tail"} })<CR>', opts) -- Changed to a string
+        Map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts) -- Changed to a string
+        Map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts) -- Changed to a string
+        Map('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts) -- Changed to a string
+        Map('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts) -- Changed to a string
+        Map('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts) -- Changed to a string
+        Map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts) -- Changed to a string
+        Map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts) -- Changed to a string
+        Map({ 'n', 'v' }, '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts) -- Changed to a string
+        Map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts) -- Changed to a string
+
+        -- DAP --
+        Map('n', '<F5>', '<cmd>lua require("dap").continue()<CR>', { desc = 'DAP: Continue' }) -- Changed to a string
+        Map('n', '<F7>', '<cmd>lua require("dap").step_into()<CR>', { desc = 'DAP: Step Into' }) -- Changed to a string
+        Map('n', '<F8>', '<cmd>lua require("dap").step_over()<CR>', { desc = 'DAP: Step Over' }) -- Changed to a string
+        Map('n', '<F9>', '<cmd>lua require("dap").step_out()<CR>', { desc = 'DAP: Step Out' }) -- Changed to a string
+        Map('n', '<F12>', '<cmd>lua require("dap").close()<CR>', { desc = 'DAP: Close' }) -- Changed to a string
+        Map('n', '<leader>b', '<cmd>lua require("dap").toggle_breakpoint()<CR>', { desc = 'DAP: Toggle Breakpoint' }) -- Changed to a string
+    end,
+})
