@@ -42,14 +42,21 @@ Map("v", "J", "jzz")
 Map("v", "K", "kzz")
 Map("n", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
 Map("n", "<C-q>", ":q<CR>")
+<<<<<<< HEAD
 Map("i", "<C-s>", "<Esc>:w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
 Map("i", "<C-q>", "<Esc>:q<CR>")
 Map("v", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
+=======
+Map("i", "<C-s>", "<Esc>:w<CR>")
+Map("i", "<C-q>", "<Esc>:q<CR>")
+Map("v", "<C-s>", ":w<CR>")
+>>>>>>> 262a040372da20795372f3db31710a6564a7ed0c
 Map("v", "<C-q>", ":q<CR>")
 Map("n", "<A-j>", ":m .+1<CR>==zz")
 Map("n", "<A-k>", ":m .-2<CR>==zz")
 Map("v", "<A-j>", ":m '>+1<CR>gv=gvzz")
 Map("v", "<A-k>", ":m '<-2<CR>gv=gvzz")
+<<<<<<< HEAD
 Map("n", "<C-A-m>", "<C-w>_")
 Map("n", "<C-A-j>", "<C-w>j")
 Map("n", "<C-A-k>", "<C-w>k")
@@ -57,6 +64,12 @@ Map("n", "<C-A-h>", "<C-w>h")
 Map("n", "<C-A-l>", "<C-w>l")
 Map("n", "<C-A-d>", "<C-w>-")
 Map("n", "<C-A-i>", "<C-w>+")
+=======
+Map("n", "<C-w><C-w>", "<C-w><C-w><C-w>_")
+Map("n", "<C-w><C-p>", "<C-w><C-p><C-w>_")
+Map("n", "<C-w><C-m>", "<C-w>_")
+Map("v", "p", "pgvy")
+>>>>>>> 262a040372da20795372f3db31710a6564a7ed0c
 
 -- LSP Key Mappings
 Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -117,6 +130,9 @@ require('config.cmp')
 require('config.lackluster')
 require('config.gitsigns')
 require('config.lualine')
+<<<<<<< HEAD
 require('config.trouble')
+=======
+>>>>>>> 262a040372da20795372f3db31710a6564a7ed0c
 require('command-completion').setup()
 require('config.borders').setup_lsp_handlers()
