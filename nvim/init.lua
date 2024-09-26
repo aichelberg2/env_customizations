@@ -3,20 +3,20 @@ vim.g.mapleader = " "
 
 -- Key mappings
 function Map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
 
-    if type(rhs) == "function" then
-        rhs = string.format("<cmd>lua %s()<CR>", debug.getinfo(rhs).source:match("[%w_]+")) -- Get the function name
-    end
+	if type(rhs) == "function" then
+		rhs = string.format("<cmd>lua %s()<CR>", debug.getinfo(rhs).source:match("[%w_]+")) -- Get the function name
+	end
 
-    if opts and opts.buffer then
-        vim.api.nvim_buf_set_keymap(opts.buffer, mode, lhs, rhs, options)
-    else
-        vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-    end
+	if opts and opts.buffer then
+		vim.api.nvim_buf_set_keymap(opts.buffer, mode, lhs, rhs, options)
+	else
+		vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	end
 end
 
 Map("n", "r", "<C-r>")
@@ -42,21 +42,14 @@ Map("v", "J", "jzz")
 Map("v", "K", "kzz")
 Map("n", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
 Map("n", "<C-q>", ":q<CR>")
-<<<<<<< HEAD
 Map("i", "<C-s>", "<Esc>:w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
 Map("i", "<C-q>", "<Esc>:q<CR>")
 Map("v", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
-=======
-Map("i", "<C-s>", "<Esc>:w<CR>")
-Map("i", "<C-q>", "<Esc>:q<CR>")
-Map("v", "<C-s>", ":w<CR>")
->>>>>>> 262a040372da20795372f3db31710a6564a7ed0c
 Map("v", "<C-q>", ":q<CR>")
 Map("n", "<A-j>", ":m .+1<CR>==zz")
 Map("n", "<A-k>", ":m .-2<CR>==zz")
 Map("v", "<A-j>", ":m '>+1<CR>gv=gvzz")
 Map("v", "<A-k>", ":m '<-2<CR>gv=gvzz")
-<<<<<<< HEAD
 Map("n", "<C-A-m>", "<C-w>_")
 Map("n", "<C-A-j>", "<C-w>j")
 Map("n", "<C-A-k>", "<C-w>k")
@@ -64,12 +57,10 @@ Map("n", "<C-A-h>", "<C-w>h")
 Map("n", "<C-A-l>", "<C-w>l")
 Map("n", "<C-A-d>", "<C-w>-")
 Map("n", "<C-A-i>", "<C-w>+")
-=======
 Map("n", "<C-w><C-w>", "<C-w><C-w><C-w>_")
 Map("n", "<C-w><C-p>", "<C-w><C-p><C-w>_")
 Map("n", "<C-w><C-m>", "<C-w>_")
 Map("v", "p", "pgvy")
->>>>>>> 262a040372da20795372f3db31710a6564a7ed0c
 
 -- LSP Key Mappings
 Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -105,7 +96,7 @@ vim.opt.relativenumber = true
 vim.opt.wrap = true
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir="C:\\Users\\L15\\.vim\\undo\\"
+vim.opt.undodir = "C:\\Users\\ChristianGappel\\.vim\\undo\\"
 vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
@@ -113,26 +104,24 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
---
+
 -- Set highlighting
 vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
 
 -- Require the plugins configuration
-require('plugins')
-require('config.nvim-tree')
-require('config.telescope')
-require('config.harpoon')
-require('config.undotree')
-require('config.mason')
-require('config.treesitter')
-require('config.lsp')
-require('config.cmp')
-require('config.lackluster')
-require('config.gitsigns')
-require('config.lualine')
-<<<<<<< HEAD
-require('config.trouble')
-=======
->>>>>>> 262a040372da20795372f3db31710a6564a7ed0c
-require('command-completion').setup()
-require('config.borders').setup_lsp_handlers()
+require("plugins")
+require("config.nvim-tree")
+require("config.telescope")
+require("config.harpoon")
+require("config.undotree")
+require("config.mason")
+require("config.treesitter")
+require("config.dap")
+require("config.lsp")
+require("config.cmp")
+require("config.lackluster")
+require("config.gitsigns")
+require("config.lualine")
+require("config.trouble")
+require("command-completion").setup()
+require("config.borders").setup_lsp_handlers()

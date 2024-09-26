@@ -1,130 +1,128 @@
-local status, dap = pcall(require, 'dap')
-if (not status) then
-	print("dap not loaded")
-	return
-end
+local dap = require("dap")
 
-local dap_status, dapui = pcall(require, 'dapui')
-if (not dap_status) then
-	print("dapui not loaded")
-	return
-end
-
-local ph_status, dotnet_ph = pcall(require, 'utilities.path_finder')
-if (not ph_status) then
-	print("path_finder not loaded")
-	return
-end
-
--- used by nvim-dap
 dap.adapters.coreclr = {
-	type = 'executable',
-	command = dotnet_ph.GetNetCoreDbgPath(),
-	args = { '--interpreter=vscode' },
-	options = {
-		detached = false, -- Will put the output in the REPL. #CloseEnough
-		cwd = dotnet_ph.GetDebugCwd(),
-	}
+	type = "executable",
+	command = "C:\\Users\\ChristianGappel\\netcoredbg\\netcoredbg.exe",
+	args = { "--interpreter=vscode" },
 }
 
--- Neotest Test runner looks at this table
-dap.adapters.netcoredbg = vim.deepcopy(dap.adapters.coreclr)
-
--- useful for debugging issues with dap
--- Logs are written to :lua print(vim.fn.stdpath('cache'))
--- dap.set_log_level('DEBUG')  -- or `TRACE` for more logs
-
--- Used by nvim-dap
 dap.configurations.cs = {
 	{
 		type = "coreclr",
-		name = "launch - netcoredbg",
+		name = "launch - WebApi",
 		request = "launch",
-		program = dotnet_ph.GetDllPath,
-		-- stopAtentry = true,
-		console = "integratedTerminal"
+		program = "C:/dev/CustomerPortal.WebAPI/Repower.CustomerPortal.WebAPI/bin/Debug/net8.0/Repower.CustomerPortal.WebAPI.dll",
+		args = {},
+		cwd = "${workspaceFolder}",
+		env = {
+			ASPNETCORE_ENVIRONMENT = "Development",
+			ASPNETCORE_LAUNCH_PROFILE = "Christian Gappel",
+		},
+		console = "integratedTerminal",
 	},
 }
 
-local status_ui, dap_ui = pcall(require, 'dapui')
-if (not status_ui) then
-	print("dapui not loaded")
-	return
-end
+vim.api.nvim_set_keymap("n", "<leader>b", '<cmd>lua require"dap".toggle_breakpoint()<CR>', {})
+vim.api.nvim_set_keymap("n", "<F5>", '<cmd>lua require"dap".continue()<CR>', {})
+vim.api.nvim_set_keymap("n", "<s-F5>", '<cmd>lua require"dap".terminate()<CR>', {})
+vim.api.nvim_set_keymap("n", "<F10>", '<cmd>lua require"dap".step_over()<CR>', {})
+vim.api.nvim_set_keymap("n", "<F11>", '<cmd>lua require"dap".step_into()<CR>', {})
+-- NOTE: When you step into a method, it will not open in a new tab, it will go into a new buffer,
+-- therefore use Ctrl+6 to switch in between buffers, if you don't want to lose track of where you were before.
+-- And if you want to get rid of the other buffer(s) then:
+-- 1. List the buffers with :ls
+-- 2. grab their id number and then
+-- 3. delete them by typing :bw# where # is the id of the buffer you want to wipe out
+vim.api.nvim_set_keymap("n", "<s-F11>", '<cmd>lua require"dap".step_out()<CR>', {})
+vim.api.nvim_set_keymap("n", "repl", '<cmd>lua require"dap.repl".toggle()<CR>', {})
+-- vim.api.nvim_set_keymap('n', 'repl', '<cmd>lua require"dap".repl.open()<CR>', {})
+-- NOTE: IF you are ever stuck working with multiple buffers, then you can do ":tab ball" (yes with b, ball)
+-- and it will put all those buffers in their own tab.
+-- debug config end
 
-dap_ui.setup({
-	controls = {
-		element = "repl",
-		enabled = true,
-		icons = {
-			disconnect = "",
-			pause = "",
-			play = "",
-			run_last = "",
-			step_back = "",
-			step_into = "",
-			step_out = "",
-			step_over = "",
-			terminate = ""
-		}
-	},
-	element_mappings = {},
-	expand_lines = true,
-	floating = {
-		border = "single",
-		mappings = {
-			close = { "q", "<Esc>" }
-		}
-	},
-	force_buffers = true,
-	icons = {
-		collapsed = "",
-		current_frame = "",
-		expanded = ""
-	},
-	layouts = { {
-		elements = { {
-			id = "console",
-			size = 0.2
-		}, {
-			id = "breakpoints",
-			size = 0.2
-		}, {
-			id = "stacks",
-			size = 0.2
-		}, {
-			id = "repl",
-			size = 0.2
-		}, {
-			id = "watches",
-			size = 0.2
-		} },
-		position = "left",
-		size = 50
-	}, {
-		elements = {  {
-			id = "scopes",
-			size = 1
-		} },
-		position = "bottom",
-		size = 10
-	} },
+-- debugging UI
+local dapui = require("dapui")
+
+dapui.setup({
+	icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
 	mappings = {
-		edit = "e",
+		-- Use a table to apply multiple mappings
 		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
 		remove = "d",
+		edit = "e",
 		repl = "r",
-		toggle = "t"
+		toggle = "t",
 	},
+	-- Use this to override mappings for specific elements
+	element_mappings = {
+		-- Example:
+		-- stacks = {
+		--   open = "<CR>",
+		--   expand = "o",
+		-- }
+	},
+	-- Expand lines larger than the window
+	-- Requires >= 0.7
+	expand_lines = vim.fn.has("nvim-0.7") == 1,
+	-- Layouts define sections of the screen to place windows.
+	-- The position can be "left", "right", "top" or "bottom".
+	-- The size specifies the height/width depending on position. It can be an Int
+	-- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
+	-- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
+	-- Elements are the elements shown in the layout (in order).
+	-- Layouts are opened in order so that earlier layouts take priority in window sizing.
+	layouts = {
+		{
+			elements = {
+				-- Elements can be strings or table with id and size keys.
+				{ id = "scopes", size = 0.25 },
+				"breakpoints",
+				"stacks",
+				"watches",
+			},
+			size = 40, -- 40 columns
+			position = "left",
+		},
+		{
+			elements = {
+				"repl",
+				"console",
+			},
+			size = 0.25, -- 25% of total lines
+			position = "bottom",
+		},
+	},
+	controls = {
+		-- Requires Neovim nightly (or 0.8 when released)
+		enabled = false, -- because I'm not using NVIM version 8, I'm using 7.2
+		-- Display controls in this element
+		element = "repl",
+		icons = {
+			pause = "",
+			play = "",
+			step_into = "",
+			step_over = "",
+			step_out = "",
+			step_back = "",
+			run_last = "↻",
+			terminate = "□",
+		},
+	},
+	floating = {
+		max_height = nil, -- These can be integers or a float between 0 and 1.
+		max_width = nil, -- Floats will be treated as percentage of your screen.
+		border = "single", -- Border style. Can be "single", "double" or "rounded"
+		mappings = {
+			close = { "q", "<Esc>" },
+		},
+	},
+	windows = { indent = 1 },
 	render = {
-		indent = 1,
-		max_value_lines = 100
-	}
+		max_type_length = nil, -- Can be integer or nil.
+		max_value_lines = 100, -- Can be integer or nil.
+	},
 })
-------------
--- Dap UI --
-------------
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
@@ -135,6 +133,3 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
-
-vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '▶️', texthl = '', linehl = '', numhl = '' })
