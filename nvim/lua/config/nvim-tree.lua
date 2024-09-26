@@ -1,3 +1,9 @@
+local function my_on_attach(bufnr)
+	local api = require("nvim-tree.api")
+	api.config.mappings.default_on_attach(bufnr)
+	vim.keymap.del("n", "<C-k>", { buffer = bufnr })
+end
+
 -- NvimTree configuration
 require("nvim-tree").setup({
 	view = {
@@ -14,23 +20,12 @@ require("nvim-tree").setup({
 		open_file = {
 			quit_on_open = true,
 		},
-	}
+	},
+	on_attach = my_on_attach,
 })
 
--- Function to open NvimTree in full screen
-local function open_nvim_tree_fullscreen()
-	require("nvim-tree.api").tree.open()
-	vim.cmd("wincmd o") -- Make it full screen
-end
-
 -- Keybindings
--- vim.api.nvim_set_keymap('n', '<leader>pe', '', {
--- 	noremap = true,
--- 	silent = true,
--- 	callback = open_nvim_tree_fullscreen
--- })
-
-vim.api.nvim_set_keymap('n', '<leader>pf', ':NvimTreeToggle<CR>', {
+vim.api.nvim_set_keymap("n", "<leader>pf", ":NvimTreeToggle<CR>", {
 	noremap = true,
-	silent = true
+	silent = true,
 })
