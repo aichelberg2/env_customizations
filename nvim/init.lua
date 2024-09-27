@@ -27,6 +27,8 @@ Map("n", "<leader>pp", "mzggVGp`zzz")
 Map("n", "<leader>d", "ggVGd")
 Map("n", "<C-h>", "_")
 Map("n", "<C-l>", "$")
+Map("v", "<C-h>", "_")
+Map("v", "<C-l>", "$")
 Map("n", "<leader>[", "%")
 Map("n", "n", "o<Esc>")
 Map("n", "N", "O<Esc>")
@@ -104,6 +106,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
+vim.opt.whichwrap:append("h,l")
 
 -- Set highlighting
 vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
