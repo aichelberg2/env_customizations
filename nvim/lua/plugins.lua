@@ -83,4 +83,24 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"ggandor/leap.nvim",
+		dependecies = { "tpope/start.nvim" },
+		config = function()
+			require("leap").create_default_mappings()
+		end,
+	},
+	{
+		"ggandor/flit.nvim",
+		dependecies = { "ggandor/leap.nvim" },
+		config = function()
+			require("flit").setup()
+		end,
+	},
+	{
+		"eoh-bse/minintro.nvim",
+		opts = { color = "#88A9B3" },
+		config = true,
+		lazy = false,
+	},
 })
