@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -21,7 +20,7 @@ require("lazy").setup({
 	"cocopon/iceberg.vim",
 	{
 		"eoh-bse/minintro.nvim",
-		opts = { color = "#8a63ff" },
+		opts = { color = "#8f84b0" },
 		config = true,
 		lazy = false,
 	},
@@ -90,13 +89,12 @@ require("lazy").setup({
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
 	"rcarriga/cmp-dap",
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
 
 	-- LSP
-	"williamboman/mason-lspconfig.nvim",
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+	},
 	"neovim/nvim-lspconfig",
 	{
 		"williamboman/mason.nvim",
@@ -114,6 +112,10 @@ require("lazy").setup({
 			"jay-babu/mason-nvim-dap.nvim",
 			"rcarriga/nvim-dap-ui",
 		},
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
 	-- DAP
@@ -155,8 +157,8 @@ require("lazy").setup({
 		"coffebar/neovim-project",
 		opts = {
 			projects = {
-				"C:/dev/*",
-				"C:/Users/ChristianGappel/AppData/Local/nvim",
+				"C:/Users/aiche/dev/*",
+				"C:/Users/aiche/AppData/Local/nvim",
 			},
 			picker = {
 				type = "telescope",
@@ -185,7 +187,7 @@ require("lazy").setup({
 		init = function()
 			vim.g.db_ui_use_nerd_fonts = 1
 			vim.g.db_ui_win_position = "right"
-			vim.g.db_ui_winwidth = 85
+			vim.g.db_ui_winwidth = RightScreenSpace
 		end,
 	},
 })

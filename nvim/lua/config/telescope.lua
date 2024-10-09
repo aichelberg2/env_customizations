@@ -1,11 +1,4 @@
 local border_chars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
-local builtin = require("telescope.builtin")
-
-vim.keymap.set("n", "<leader>F", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
-vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
-vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope file_history history<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope resume<CR>", { noremap = true, silent = true })
 
 local actions = require("telescope.actions")
 require("telescope").setup({

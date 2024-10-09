@@ -8,7 +8,7 @@ end
 require("nvim-tree").setup({
 	update_focused_file = { enable = true },
 	view = {
-		width = 85,
+		width = RightScreenSpace,
 		side = "right",
 		float = {
 			enable = false,
@@ -23,10 +23,4 @@ require("nvim-tree").setup({
 		},
 	},
 	on_attach = my_on_attach,
-})
-
--- Keybindings
-vim.api.nvim_set_keymap("n", "<leader>pf", ":NvimTreeToggle<CR>", {
-	noremap = true,
-	silent = true,
 })

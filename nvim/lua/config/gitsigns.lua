@@ -22,12 +22,3 @@ require('gitsigns').setup {
 vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'GitGutterAdd' })
 vim.api.nvim_set_hl(0, 'GitSignsChange', { link = 'GitGutterChange' })
 vim.api.nvim_set_hl(0, 'GitSignsDelete', { link = 'GitGutterDelete' })
-
--- Set key mappings for navigating hunks
-local function set_gitsigns_keymaps()
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', opts)
-    vim.keymap.set('n', '<leader>gb', ':Gitsigns blame_line<CR>', opts)
-end
-
-set_gitsigns_keymaps()

@@ -32,24 +32,6 @@ dap.configurations.cs = {
 	},
 }
 
--- Bind F6 to run the build command
-vim.api.nvim_set_keymap("n", "<F6>", [[:lua RunDetachedBuildCommand()<CR>]], { noremap = true, silent = true })
-
--- Function to run the build command
-function RunDetachedBuildCommand()
-	local build_command = 'start cmd.exe /c "dotnet build C:/dev/CustomerPortal.WebAPI/ & pause"'
-	os.execute(build_command)
-	print("Build started in a new command window")
-end
-
-vim.api.nvim_set_keymap("n", "<leader>b", '<cmd>lua require"dap".toggle_breakpoint()<CR>', {})
-vim.api.nvim_set_keymap("n", "<F5>", '<cmd>lua require"dap".continue()<CR>', {})
-vim.api.nvim_set_keymap("n", "<s-F5>", '<cmd>lua require"dap".terminate()<CR>', {})
-vim.api.nvim_set_keymap("n", "<F10>", '<cmd>lua require"dap".step_over()<CR>', {})
-vim.api.nvim_set_keymap("n", "<F11>", '<cmd>lua require"dap".step_into()<CR>', {})
-vim.api.nvim_set_keymap("n", "<s-F11>", '<cmd>lua require"dap".step_out()<CR>', {})
-vim.api.nvim_set_keymap("n", "repl", '<cmd>lua require"dap.repl".toggle()<CR>', {})
-
 -- debugging UI
 local dapui = require("dapui")
 
@@ -73,7 +55,7 @@ dapui.setup({
 				{ id = "breakpoints", size = 0.25 },
 				{ id = "scopes", size = 0.5 },
 			},
-			size = 85,
+			size = RightScreenSpace,
 			position = "right",
 		},
 		{
@@ -108,6 +90,3 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
-
-vim.api.nvim_set_keymap("n", "<leader>dh", '<Cmd>lua require"dapui".eval()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>dg", '<cmd>lua require"dapui".toggle()<CR>', { noremap = true, silent = true })
