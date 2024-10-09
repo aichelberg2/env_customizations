@@ -1,30 +1,35 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [
+    "actions": 
+    [
         {
-            "command": {
+            "command": 
+            {
                 "action": "switchToTab",
                 "index": 0
             },
             "keys": "ctrl+1"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "switchToTab",
                 "index": 1
             },
             "keys": "ctrl+2"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "switchToTab",
                 "index": 2
             },
             "keys": "alt+1"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "switchToTab",
                 "index": 3
             },
@@ -33,55 +38,61 @@
     ],
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "firstWindowPreference": "persistedWindowLayout",
-    "newTabMenu": [
+    "newTabMenu": 
+    [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": {
-        "defaults": {
+    "profiles": 
+    {
+        "defaults": 
+        {
             "adjustIndistinguishableColors": "never",
-            "backgroundImage": "C:\\Users\\L15\\Dropbox\\Bilder\\Backgrounds\\Diashow\\terminal.jpg",
+            "backgroundImage": "C:\\Users\\aiche\\ownCloud\\Bilder\\Backgrounds\\Diashow\\xcrsdiix3b2a1.jpg",
             "backgroundImageOpacity": 0.2,
             "bellStyle": "none",
-            "colorScheme": "Fahrenheit",
+            "colorScheme": "Iceberg",
             "cursorShape": "emptyBox",
+            "elevate": false,
             "experimental.retroTerminalEffect": false,
-            "font": {
+            "font": 
+            {
                 "cellHeight": "1.2",
-                "face": "JetBrainsMono Nerd Font",
-                "size": 14.0,
+                "face": "JetBrainsMonoNL NF",
+                "size": 13.0,
                 "weight": "extra-light"
             },
             "opacity": 100
         },
-        "list": [
+        "list": 
+        [
             {
-                "commandline": "pwsh.exe -NoExit -Command cd C:\\dev\\gappel-cloud; nvim .",
+                "commandline": "pwsh.exe -NoExit -Command cd C:\\Users\\aiche\\dev\\gappel-cloud\\src\\GappelCloud\\GappelCloud; nvim",
                 "guid": "{6e9fa4d2-a4aa-562d-b1fa-0789dc1f83d7}",
                 "hidden": false,
-                "icon": "BV",
+                "icon": "C:\\Users\\aiche\\dev\\env_customizations\\images\\vim-svgrepo-com.png",
                 "name": "Backend Neovim"
             },
             {
-                "commandline": "pwsh.exe -NoExit -Command cd C:\\dev\\gappel-cloud",
+                "commandline": "pwsh.exe -NoExit -Command cd C:\\Users\\aiche\\dev\\gappel-cloud\\src\\GappelCloud\\GappelCloud",
                 "guid": "{7e9fa4d2-a4aa-562d-b1fa-0789dc1f83d8}",
                 "hidden": false,
-                "icon": "BT",
+                "icon": "C:\\Users\\aiche\\dev\\env_customizations\\images\\terminal-svgrepo-com.png",
                 "name": "Backend Terminal"
             },
             {
-                "commandline": "pwsh.exe -NoExit -Command cd C:\\dev\\gappel-solutions; nvim .",
+                "commandline": "pwsh.exe -NoExit -Command cd C:\\Users\\aiche\\dev\\gappel-solutions; nvim",
                 "guid": "{8e9fa4d2-a4aa-562d-b1fa-0789dc1f83d9}",
                 "hidden": false,
-                "icon": "FV",
+                "icon": "C:\\Users\\aiche\\dev\\env_customizations\\images\\vim-svgrepo-com.png",
                 "name": "Frontend Neovim"
             },
             {
-                "commandline": "pwsh.exe -NoExit -Command cd C:\\dev\\gappel-solutions",
+                "commandline": "pwsh.exe -NoExit -Command cd C:\\Users\\aiche\\dev\\gappel-solutions",
                 "guid": "{9e9fa4d2-a4aa-562d-b1fa-0789dc1f83da}",
                 "hidden": false,
-                "icon": "FT",
+                "icon": "C:\\Users\\aiche\\dev\\env_customizations\\images\\terminal-svgrepo-com.png",
                 "name": "Frontend Terminal"
             },
             {
@@ -89,7 +100,19 @@
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "C:\\\\"
+                "startingDirectory": "C:\\Users\\aiche"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "source": "Git"
+            },
+            {
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             },
             {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
@@ -98,13 +121,15 @@
                 "source": "Windows.Terminal.Wsl"
             },
             {
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "guid": "{d8e96812-b789-5068-a5ae-10b2fb53e95f}",
                 "hidden": false,
-                "name": "Windows PowerShell"
+                "name": "Ubuntu 24.04.1 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu24.04LTS_79rhkp1fndgsc"
             }
         ]
     },
-    "schemes": [
+    "schemes": 
+    [
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -196,6 +221,29 @@
             "selectionBackground": "#003333",
             "white": "#E0E0E0",
             "yellow": "#A0D3D3"
+        },
+        {
+            "background": "#000000",
+            "black": "#161821",
+            "blue": "#84A0C6",
+            "brightBlack": "#6B7089",
+            "brightBlue": "#91ACD1",
+            "brightCyan": "#95C4CE",
+            "brightGreen": "#C0CA8E",
+            "brightPurple": "#ADA0D3",
+            "brightRed": "#E98989",
+            "brightWhite": "#D2D4DE",
+            "brightYellow": "#E9B189",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#89B8C2",
+            "foreground": "#C6C8D1",
+            "green": "#B4BE82",
+            "name": "Iceberg",
+            "purple": "#A093C7",
+            "red": "#E27878",
+            "selectionBackground": "#FFFFFF",
+            "white": "#C6C8D1",
+            "yellow": "#E2A478"
         },
         {
             "background": "#282C34",
@@ -352,6 +400,29 @@
             "foreground": "#FFFFFF",
             "green": "#26A269",
             "name": "Ubuntu-18.04-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-24.04-ColorScheme",
             "purple": "#881798",
             "red": "#C21A23",
             "selectionBackground": "#FFFFFF",
