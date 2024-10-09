@@ -1,10 +1,9 @@
 local cmp = require("cmp")
-local border_opts = require("config.borders").float_opts
 
 cmp.setup({
 	window = {
-		completion = cmp.config.window.bordered(border_opts),
-		documentation = cmp.config.window.bordered(border_opts),
+		completion = cmp.config.window.bordered({}),
+		documentation = cmp.config.window.bordered({}),
 	},
 	mapping = {
 		["<C-e>"] = cmp.mapping.complete(),
@@ -16,15 +15,28 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "cmdline" },
 	},
 })
 
-cmp.setup.filetype("cs", {
-    sources = {
-        { name = "nvim_lsp" },
-        { name = "path" }
-    }
+cmp.setup.filetype({ "sql" }, {
+	sources = {
+		{ name = "vim-dadbod-completion" },
+		{ name = "buffer" },
+	},
+})
+
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+})
+
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
 })

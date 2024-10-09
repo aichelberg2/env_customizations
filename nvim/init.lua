@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 -- Key mappings
 function Map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
+
 	if opts then
 		options = vim.tbl_extend("force", options, opts)
 	end
@@ -19,19 +20,37 @@ function Map(mode, lhs, rhs, opts)
 	end
 end
 
+-- Require the plugins configuration
+require("plugins")
+require("config.cmp")
+require("config.dap")
+require("config.gitsigns")
+require("config.harpoon")
+require("config.lsp")
+require("config.lualine")
+require("config.mason")
+require("config.noice")
+require("config.nvim-tree")
+require("config.telescope")
+require("config.theme")
+require("config.treesitter")
+require("config.trouble")
+require("config.undotree")
+require("config.borders").setup_lsp_handlers()
+
 Map("n", "r", "<C-r>")
-Map("n", "<leader>r", "r")
 Map("n", "<leader>a", "ggVG")
 Map("n", "<leader>y", "mzggVGy`zzz")
-Map("n", "<leader>pp", "mzggVGp`zzz")
-Map("n", "<leader>d", "ggVGd")
-Map("n", "<C-h>", "_")
+Map("n", "<leader>P", "mzggVGp`zzz")
+Map("n", "<leader>D", "ggVGd")
 Map("n", "<C-l>", "$")
+Map("n", "<C-h>", "_")
 Map("v", "<C-h>", "_")
 Map("v", "<C-l>", "$")
 Map("n", "<leader>[", "%")
 Map("n", "n", "o<Esc>")
 Map("n", "N", "O<Esc>")
+Map("n", "<C-n>", "i<CR><Esc>l")
 Map("n", "<C-k>", "<C-u>zz")
 Map("n", "<C-j>", "<C-d>zz")
 Map("v", "<C-k>", "<C-u>zz")
@@ -42,9 +61,13 @@ Map("n", "J", "jzz")
 Map("n", "K", "kzz")
 Map("v", "J", "jzz")
 Map("v", "K", "kzz")
-Map("n", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
+Map("n", "<S-h>", ":execute 'normal! 80zh'<CR>", { desc = "Scroll left half page" })
+Map("n", "<S-l>", ":execute 'normal! 80zl'<CR>", { desc = "Scroll right half page" })
+--Map("n", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
+Map("n", "<C-s>", ":w<CR>")
 Map("n", "<C-q>", ":q<CR>")
-Map("i", "<C-s>", "<Esc>:w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
+--Map("i", "<C-s>", "<Esc>:w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
+Map("i", "<C-s>", "<Esc>:w<CR>")
 Map("i", "<C-q>", "<Esc>:q<CR>")
 Map("v", "<C-s>", ":w<CR>:lua vim.lsp.buf.format({ async = true })<CR>")
 Map("v", "<C-q>", ":q<CR>")
@@ -59,31 +82,40 @@ Map("n", "<C-A-h>", "<C-w>h")
 Map("n", "<C-A-l>", "<C-w>l")
 Map("n", "<C-A-d>", "<C-w>-")
 Map("n", "<C-A-i>", "<C-w>+")
-Map("n", "<C-w><C-w>", "<C-w><C-w><C-w>_")
-Map("n", "<C-w><C-p>", "<C-w><C-p><C-w>_")
-Map("n", "<C-w><C-m>", "<C-w>_")
+Map("n", "<C-m>", "<C-w>_")
 Map("v", "p", "pgvy")
+Map("n", "<leader>/", '/<C-r>"<CR>')
+Map("n", "<leader>t", 'J')
+Map("n", "<leader>o", '<cmd>NeovimProjectDiscover<CR>')
+Map("n", "<leader>db", '<cmd>DBUIToggle<CR>')
 
--- LSP Key Mappings
-Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-Map("n", "<leader>pi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-Map("n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>")
-Map("n", "<leader>pr", ":Telescope lsp_references<CR>")
-Map("n", "<leader>=", ":lua vim.lsp.buf.format({ async = true })<CR>")
+function DeleteLockFileAndOpenLazyGit()
+	local lock_file_path = ".git\\index.lock"
+	local file_exists = vim.fn.filereadable(lock_file_path) == 1
+
+	if file_exists then
+		vim.cmd("silent !del " .. lock_file_path)
+	end
+	vim.cmd("LazyGit")
+end
+Map("n", "<leader>G", "<cmd>lua DeleteLockFileAndOpenLazyGit()<CR>")
 
 -- Mappings for VSCode
 Map("n", "<A-h>", "<C-o>")
 Map("n", "<A-l>", "<C-i>")
 
--- Git
-Map("n", "<leader>gg", ":Git<CR><C-w>_")
-Map("n", "<leader>gd", ":Gvdiff<CR><C-w>_")
-Map("n", "<leader>gm", ":Gvdiff origin/main<CR><C-w>_")
-Map("n", "<leader>gc", ":Git commit -v<CR><C-w>_")
-Map("n", "<leader>gf", ":Git fetch<CR>")
-Map("n", "<leader>gp", ":Git push<CR>")
-Map("n", "<C-n>", "]c")
-Map("n", "<C-p>", "[c")
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR><C-w>L', {
+    desc = "Toggle Spectre"
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR><C-w>L', {
+    desc = "Search current word"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR><C-w>L', {
+    desc = "Search current word"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR><C-w>L', {
+    desc = "Search on current file"
+})
 
 -- Set options
 vim.opt.shiftwidth = 4
@@ -110,21 +142,3 @@ vim.opt.whichwrap:append("h,l")
 
 -- Set highlighting
 vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
-
--- Require the plugins configuration
-require("plugins")
-require("config.nvim-tree")
-require("config.telescope")
-require("config.harpoon")
-require("config.undotree")
-require("config.mason")
-require("config.treesitter")
-require("config.dap")
-require("config.lsp")
-require("config.cmp")
-require("config.lackluster")
-require("config.gitsigns")
-require("config.lualine")
-require("config.trouble")
-require("command-completion").setup()
-require("config.borders").setup_lsp_handlers()

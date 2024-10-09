@@ -6,8 +6,9 @@ end
 
 -- NvimTree configuration
 require("nvim-tree").setup({
+	update_focused_file = { enable = true },
 	view = {
-		width = 30,
+		width = 85,
 		side = "right",
 		float = {
 			enable = false,

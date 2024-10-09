@@ -1,26 +1,24 @@
 local border_chars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>fc', builtin.git_commits, {})
-vim.keymap.set('n', '<leader>fs', builtin.git_status, {})
-Map("n", "<leader>pr", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "<leader>F", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
+vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
+vim.api.nvim_set_keymap("n", "<leader>fh", ":Telescope file_history history<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope resume<CR>", { noremap = true, silent = true })
 
 local actions = require("telescope.actions")
-require('telescope').setup{
+require("telescope").setup({
 	defaults = {
 		borderchars = border_chars,
 		mappings = {
 			n = {
 				["<C-k>"] = actions.preview_scrolling_up,
-				["<C-j>"] = actions.preview_scrolling_down
-			}
+				["<C-j>"] = actions.preview_scrolling_down,
+			},
 		},
 		path_display = {
-			"shorten"
+			"shorten",
 		},
 		layout_config = {
 			prompt_position = "top",
@@ -38,5 +36,8 @@ require('telescope').setup{
 				theme = "dropdown",
 			},
 		},
-	}
-}
+		sorting_strategy = "ascending",
+	},
+})
+require("telescope").load_extension("ui-select")
+

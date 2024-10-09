@@ -1,5 +1,9 @@
 local dap = require("dap")
 
+require("mason-nvim-dap").setup({
+	ensure_installed = { "coreclr", "node2", "js", "chrome" },
+})
+
 dap.adapters.coreclr = {
 	type = "executable",
 	command = "C:\\Users\\ChristianGappel\\netcoredbg\\netcoredbg.exe",
@@ -12,33 +16,39 @@ dap.configurations.cs = {
 		name = "launch - WebApi",
 		request = "launch",
 		program = "C:/dev/CustomerPortal.WebAPI/Repower.CustomerPortal.WebAPI/bin/Debug/net8.0/Repower.CustomerPortal.WebAPI.dll",
-		args = {},
-		cwd = "${workspaceFolder}",
-		env = {
-			ASPNETCORE_ENVIRONMENT = "Development",
-			ASPNETCORE_LAUNCH_PROFILE = "Christian Gappel",
-		},
+		cwd = "C:/dev/CustomerPortal.WebAPI/Repower.CustomerPortal.WebAPI",
 		console = "integratedTerminal",
+		env = {
+			ASPNETCORE_ENVIRONMENT = "christiangappel",
+			ASPNETCORE_URLS = "http://localhost:44356",
+		},
+		args = { "--launch-profile", "Christian Gappel" },
+		serverReadyAction = {
+			action = "openExternally",
+			pattern = "Now listening on:\\s+(https?://\\S+)",
+			uriFormat = "%s",
+		},
+		ports = { 44356 },
 	},
 }
+
+-- Bind F6 to run the build command
+vim.api.nvim_set_keymap("n", "<F6>", [[:lua RunDetachedBuildCommand()<CR>]], { noremap = true, silent = true })
+
+-- Function to run the build command
+function RunDetachedBuildCommand()
+	local build_command = 'start cmd.exe /c "dotnet build C:/dev/CustomerPortal.WebAPI/ & pause"'
+	os.execute(build_command)
+	print("Build started in a new command window")
+end
 
 vim.api.nvim_set_keymap("n", "<leader>b", '<cmd>lua require"dap".toggle_breakpoint()<CR>', {})
 vim.api.nvim_set_keymap("n", "<F5>", '<cmd>lua require"dap".continue()<CR>', {})
 vim.api.nvim_set_keymap("n", "<s-F5>", '<cmd>lua require"dap".terminate()<CR>', {})
 vim.api.nvim_set_keymap("n", "<F10>", '<cmd>lua require"dap".step_over()<CR>', {})
 vim.api.nvim_set_keymap("n", "<F11>", '<cmd>lua require"dap".step_into()<CR>', {})
--- NOTE: When you step into a method, it will not open in a new tab, it will go into a new buffer,
--- therefore use Ctrl+6 to switch in between buffers, if you don't want to lose track of where you were before.
--- And if you want to get rid of the other buffer(s) then:
--- 1. List the buffers with :ls
--- 2. grab their id number and then
--- 3. delete them by typing :bw# where # is the id of the buffer you want to wipe out
 vim.api.nvim_set_keymap("n", "<s-F11>", '<cmd>lua require"dap".step_out()<CR>', {})
 vim.api.nvim_set_keymap("n", "repl", '<cmd>lua require"dap.repl".toggle()<CR>', {})
--- vim.api.nvim_set_keymap('n', 'repl', '<cmd>lua require"dap".repl.open()<CR>', {})
--- NOTE: IF you are ever stuck working with multiple buffers, then you can do ":tab ball" (yes with b, ball)
--- and it will put all those buffers in their own tab.
--- debug config end
 
 -- debugging UI
 local dapui = require("dapui")
@@ -54,73 +64,38 @@ dapui.setup({
 		repl = "r",
 		toggle = "t",
 	},
-	-- Use this to override mappings for specific elements
-	element_mappings = {
-		-- Example:
-		-- stacks = {
-		--   open = "<CR>",
-		--   expand = "o",
-		-- }
-	},
-	-- Expand lines larger than the window
-	-- Requires >= 0.7
+	element_mappings = {},
 	expand_lines = vim.fn.has("nvim-0.7") == 1,
-	-- Layouts define sections of the screen to place windows.
-	-- The position can be "left", "right", "top" or "bottom".
-	-- The size specifies the height/width depending on position. It can be an Int
-	-- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-	-- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-	-- Elements are the elements shown in the layout (in order).
-	-- Layouts are opened in order so that earlier layouts take priority in window sizing.
 	layouts = {
 		{
 			elements = {
-				-- Elements can be strings or table with id and size keys.
-				{ id = "scopes", size = 0.25 },
-				"breakpoints",
-				"stacks",
-				"watches",
+				{ id = "stacks", size = 0.25 },
+				{ id = "breakpoints", size = 0.25 },
+				{ id = "scopes", size = 0.5 },
 			},
-			size = 40, -- 40 columns
-			position = "left",
+			size = 85,
+			position = "right",
 		},
 		{
 			elements = {
-				"repl",
-				"console",
+				{ id = "repl", size = 1 },
 			},
-			size = 0.25, -- 25% of total lines
+			size = 10,
 			position = "bottom",
 		},
 	},
-	controls = {
-		-- Requires Neovim nightly (or 0.8 when released)
-		enabled = false, -- because I'm not using NVIM version 8, I'm using 7.2
-		-- Display controls in this element
-		element = "repl",
-		icons = {
-			pause = "",
-			play = "",
-			step_into = "",
-			step_over = "",
-			step_out = "",
-			step_back = "",
-			run_last = "↻",
-			terminate = "□",
-		},
-	},
 	floating = {
-		max_height = nil, -- These can be integers or a float between 0 and 1.
-		max_width = nil, -- Floats will be treated as percentage of your screen.
-		border = "single", -- Border style. Can be "single", "double" or "rounded"
+		max_height = nil,
+		max_width = nil,
+		border = "single",
 		mappings = {
 			close = { "q", "<Esc>" },
 		},
 	},
 	windows = { indent = 1 },
 	render = {
-		max_type_length = nil, -- Can be integer or nil.
-		max_value_lines = 100, -- Can be integer or nil.
+		max_type_length = nil,
+		max_value_lines = 100,
 	},
 })
 
@@ -133,3 +108,6 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
+
+vim.api.nvim_set_keymap("n", "<leader>dh", '<Cmd>lua require"dapui".eval()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>dg", '<cmd>lua require"dapui".toggle()<CR>', { noremap = true, silent = true })
