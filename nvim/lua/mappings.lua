@@ -101,8 +101,8 @@ Map("n", "<F10>", '<cmd>lua require"dap".step_over()<CR>')
 Map("n", "<F11>", '<cmd>lua require"dap".step_into()<CR>')
 Map("n", "<s-F11>", '<cmd>lua require"dap".step_out()<CR>')
 Map("n", "repl", '<cmd>lua require"dap.repl".toggle()<CR>')
-Map("n", "<leader>dh", '<Cmd>lua require"dapui".eval()<CR>', { noremap = true, silent = true })
-Map("n", "<leader>dg", '<cmd>lua require"dapui".toggle()<CR>', { noremap = true, silent = true })
+Map("n", "<leader>dh", '<Cmd>lua require"dapui".eval()<CR>')
+Map("n", "<leader>dg", '<cmd>lua require"dapui".toggle()<CR>')
 
 -- LSP Mappings
 Map(
@@ -115,9 +115,9 @@ Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 Map("n", "<leader>pi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 Map("n", "<leader>pa", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 Map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>")
-Map("n", "<leader>h", vim.lsp.buf.hover, { noremap = true, silent = true })
-Map("n", "<leader>e", vim.diagnostic.open_float, { noremap = true, silent = true })
-Map("n", "<leader>=", ":lua vim.lsp.buf.format({ async = true })<CR>")
+Map("n", "<leader>h", "<cmd>lua vim.lsp.buf.hover()<CR>")
+Map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
+Map("n", "<leader>=", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>")
 
 -- Spectre Mappings
 Map("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR><C-w>L', { desc = "Toggle Spectre" })
@@ -136,7 +136,7 @@ Map(
 )
 
 -- Key binding for build command
-Map("n", "<F6>", [[:lua RunDetachedBuildCommand()<CR>]], { noremap = true, silent = true })
+Map("n", "<F6>", [[:lua RunDetachedBuildCommand()<CR>]])
 
 -- Harpoon
 Map(
