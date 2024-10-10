@@ -11,7 +11,11 @@ require("telescope").setup({
 			},
 		},
 		path_display = {
-			"shorten",
+			shorten = {
+				len = 3,
+				exclude = { 1, -1 },
+			},
+			truncate = true,
 		},
 		layout_config = {
 			prompt_position = "top",
@@ -21,16 +25,7 @@ require("telescope").setup({
 				preview_width = 0.6,
 			},
 		},
-		pickers = {
-			find_files = {
-				theme = "dropdown",
-			},
-			live_grep = {
-				theme = "dropdown",
-			},
-		},
 		sorting_strategy = "ascending",
 	},
 })
 require("telescope").load_extension("ui-select")
-

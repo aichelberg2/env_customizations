@@ -53,10 +53,6 @@ lsp.cssls.setup({
 	capabilities = capabilities,
 })
 
-lsp.angularls.setup({
-	capabilities = capabilities,
-})
-
 -- Override the default LSP floating window handler
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)

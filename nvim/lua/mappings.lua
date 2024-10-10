@@ -90,6 +90,7 @@ Map("n", "<C-A-i>", "<C-w>+")
 
 -- Git
 Map("n", "<leader>G", "<cmd>lua DeleteLockFileAndOpenLazyGit()<CR>")
+Map("n", "<leader>gg", "<cmd>LazyGit<CR>")
 Map("n", "<leader>gh", ":Gitsigns preview_hunk<CR>")
 Map("n", "<leader>gb", ":Gitsigns blame_line<CR>")
 
