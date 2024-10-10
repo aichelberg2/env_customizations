@@ -139,10 +139,15 @@ Map(
 Map("n", "<F6>", [[:lua RunDetachedBuildCommand()<CR>]], { noremap = true, silent = true })
 
 -- Harpoon
-Map("n", "<leader>p0", '<cmd>lua require("harpoon.mark").add_file()<CR>')
+Map(
+	"n",
+	"<leader>p0",
+	'<cmd>lua require("harpoon.mark").add_file()<CR><cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>'
+)
+
 Map("n", "<leader>po", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>')
 
-for i = 0, 9 do
+for i = 1, 9 do
 	Map("n", "<leader>p" .. i, '<cmd>lua require("harpoon.ui").nav_file(' .. i .. ")<CR>")
 end
 

@@ -1,5 +1,4 @@
 require("lualine").setup({
-	"harpoon2",
 	options = {
 		icons_enabled = true,
 		theme = "iceberg_dark",

@@ -5,5 +5,3 @@ require("harpoon").setup({
 	},
 	tabline = true,
 })
-
-
