@@ -21,14 +21,6 @@ require("telescope").setup({
 				preview_width = 0.6,
 			},
 		},
-		pickers = {
-			find_files = {
-				theme = "dropdown",
-			},
-			live_grep = {
-				theme = "dropdown",
-			},
-		},
 		sorting_strategy = "ascending",
 	},
 })
