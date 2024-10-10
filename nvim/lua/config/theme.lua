@@ -15,4 +15,3 @@ vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#82AAFF", bold = true })
 vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bold = true })
 vim.api.nvim_set_hl(0, "CmpItemKind", { fg = "#C792EA" })
 vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#C792EA" })
-

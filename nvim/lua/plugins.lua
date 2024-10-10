@@ -29,6 +29,19 @@ require("lazy").setup({
 		event = "VeryLazy",
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
+	{
+		"echasnovski/mini.animate",
+		config = function()
+			require("mini.animate").setup({
+				cursor = {
+					timing = require("mini.animate").gen_timing.linear({ duration = 10, unit = "total" }),
+				},
+				scroll = {
+					timing = require("mini.animate").gen_timing.linear({ duration = 40, unit = "total" }),
+				},
+			})
+		end,
+	},
 
 	-- Text
 	{
@@ -175,7 +188,7 @@ require("lazy").setup({
 	{
 		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {
-			{ "tpope/vim-dadbod", lazy = true },
+			{ "tpope/vim-dadbod",                     lazy = true },
 			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
 		},
 		cmd = {
