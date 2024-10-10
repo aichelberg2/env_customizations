@@ -11,7 +11,11 @@ require("telescope").setup({
 			},
 		},
 		path_display = {
-			"shorten",
+			shorten = {
+				len = 3,
+				exclude = { 1, -1 },
+			},
+			truncate = true,
 		},
 		layout_config = {
 			prompt_position = "top",
