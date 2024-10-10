@@ -34,10 +34,10 @@ require("lazy").setup({
 		config = function()
 			require("mini.animate").setup({
 				cursor = {
-					timing = require("mini.animate").gen_timing.linear({ duration = 10, unit = "total" }),
+					timing = require("mini.animate").gen_timing.linear({ duration = 50, unit = "total" }),
 				},
 				scroll = {
-					timing = require("mini.animate").gen_timing.linear({ duration = 40, unit = "total" }),
+					enable = false
 				},
 			})
 		end,
