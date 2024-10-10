@@ -28,7 +28,7 @@ end
 
 -- Function to run build command
 function RunDetachedBuildCommand()
-	local build_command = 'start cmd.exe /c "dotnet build C:/dev/CustomerPortal.WebAPI/ & pause"'
+	local build_command = 'start cmd.exe /c "dotnet build C:/Users/aiche/dev/gappel-cloud/src/GappelCloud/GappelCloud & pause"'
 	os.execute(build_command)
 	print("Build started in a new command window")
 end
@@ -110,7 +110,7 @@ Map(
 	"<leader>pe",
 	"<cmd>Trouble diagnostics toggle focus filter={buf=0,severity=vim.diagnostic.severity.ERROR}<cr>"
 )
-Map("n", "<leader>pr", "<cmd>Trouble lsp toggle focus<cr>")
+Map("n", "<leader>pr", "<cmd>Trouble lsp_references toggle focus<cr>")
 Map("n", "<leader>pd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 Map("n", "<leader>pi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 Map("n", "<leader>pa", "<cmd>lua vim.lsp.buf.code_action()<CR>")

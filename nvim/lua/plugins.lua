@@ -37,7 +37,7 @@ require("lazy").setup({
 					timing = require("mini.animate").gen_timing.linear({ duration = 50, unit = "total" }),
 				},
 				scroll = {
-					enable = false
+					enable = false,
 				},
 			})
 		end,
@@ -104,6 +104,7 @@ require("lazy").setup({
 	"rcarriga/cmp-dap",
 
 	-- LSP
+	"artemave/workspace-diagnostics.nvim",
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },

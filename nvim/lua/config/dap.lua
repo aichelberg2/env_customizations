@@ -6,7 +6,7 @@ require("mason-nvim-dap").setup({
 
 dap.adapters.coreclr = {
 	type = "executable",
-	command = "C:\\Users\\ChristianGappel\\netcoredbg\\netcoredbg.exe",
+	command = "C:\\Users\\aiche\\netcoredbg\\netcoredbg.exe",
 	args = { "--interpreter=vscode" },
 }
 

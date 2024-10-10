@@ -22,6 +22,9 @@ null_ls.setup({
 			end,
 		}),
 	},
+	on_attach = function(client, bufnr)
+		require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+	end,
 })
 
 lsp.lua_ls.setup({
@@ -37,6 +40,9 @@ lsp.lua_ls.setup({
 
 lsp.csharp_ls.setup({
 	capabilities = capabilities,
+	config = {
+		filetypes = { "cs" },
+	},
 })
 
 lsp.ts_ls.setup({
